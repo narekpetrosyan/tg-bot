@@ -1,10 +1,11 @@
 import { Input, Markup } from 'telegraf'
 import { Command } from './command.class'
+import { LoggerService } from '../logger/logger.service'
 
 export class StartCommand extends Command {
   handle (): void {
     this.bot.command('hi', (ctx) => {
-      console.log(ctx.session)
+      LoggerService.logger.info(ctx.session)
       ctx.reply('Hi,do you like this ?', Markup.inlineKeyboard([
         Markup.button.callback('Like', 'course_like'),
         Markup.button.callback('Dislike', 'course_dislike')
